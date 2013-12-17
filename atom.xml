@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Kingour's Blog]]></title>
+  <link href="http://lvjinguo.cn/atom.xml" rel="self"/>
+  <link href="http://lvjinguo.cn/"/>
+  <updated>2013-12-18T00:59:51+08:00</updated>
+  <id>http://lvjinguo.cn/</id>
+  <author>
+    <name><![CDATA[Kingour]]></name>
+    
+  </author>
+  <generator uri="http://press.opoo.org/">OpooPress</generator>
+
+  <entry>
+    <title type="html"><![CDATA[世界，你好！]]></title>
+    <link href="http://lvjinguo.cn/article/2013/12/hello-world/"/>
+    <updated>2013-12-17T23:52:00+08:00</updated>
+    <id>http://lvjinguo.cn/article/2013/12/hello-world/</id>
+    <content type="html"><![CDATA[<p>欢迎使用 OpooPress！</p>
+<p>这是系统自动生成的演示文章。编辑或者删除它，然后开始您的博客！</p>
+]]></content>
+  </entry>
+</feed>

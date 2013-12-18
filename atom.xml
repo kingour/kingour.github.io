@@ -3,7 +3,7 @@
   <title><![CDATA[Kingour's Blog]]></title>
   <link href="http://lvjinguo.cn/atom.xml" rel="self"/>
   <link href="http://lvjinguo.cn/"/>
-  <updated>2013-12-18T16:32:16+08:00</updated>
+  <updated>2013-12-18T16:43:48+08:00</updated>
   <id>http://lvjinguo.cn/</id>
   <author>
     <name><![CDATA[Kingour]]></name>
@@ -52,7 +52,7 @@ var duoshuoQuery = {short_name:"dollar{ site.duoshuo_short_name }"};
 <h3>修改文章发布模板</h3>
 <p>将 <code>templates/_post.ftl</code>第28行修改为</p>
 <pre class='brush:html'>&lt;#include "post/comments_duoshuo.ftl"&gt;
-</pre><h3>OpooPress作者已经集成了多说，请到github下载最新源码O(∩<em>∩)O哈哈~</em></h3>
+</pre><h3>OpooPress作者已经集成了多说，请到github下载最新源码</h3>
 ]]></content>
   </entry>
 </feed>

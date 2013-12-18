@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="zh"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sample Page - Kingour's Blog</title>
+  <title>如何在OpooPress中配置多说插件 - Kingour's Blog</title>
   <meta name="author" content="Kingour">
   
   <meta name="HandheldFriendly" content="True">
@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="Generator" content="OpooPress-1.0.3"/>
   <meta name="Generated" content="2013-12-18T12:28:22+08:00"/>
-  <link rel="canonical" href="/sample-page.html">
+  <link rel="canonical" href="/article/2013/12/duoshuo/">
   
   
   <link href="/favicon.ico" rel="icon">
@@ -24,7 +24,7 @@
 <link type="text/css" rel="stylesheet" href="/plugins/syntax-highlighter/styles/shCoreDefault.css"/>
   <!--[if lt IE 9]><script src="/javascripts/html5shiv.js"></script><![endif]-->
 </head>
-<body class="no-sidebar">
+<body>
   <!--[if lt IE 9]><script src="/javascripts/unsupported-browser.js"></script><![endif]-->
   <header role="banner"><hgroup>
   <h1><a href="/">Kingour's Blog</a></h1>
@@ -58,42 +58,114 @@
   <div id="main">
     <div id="content">
 <div>
-<article role="article">
+<article class="hentry" role="article">
   <header>
-    <h1 class="entry-title">Sample Page</h1>
-    <p class="meta">
+      <h1 class="entry-title">如何在OpooPress中配置多说插件</h1>
+
+      <p class="meta">
+		
 
 
-<time datetime="2013-06-23T11:20:00+08:00" pubdate>2013-06-23</time></p>
+<time datetime="2013-12-18T10:44:00+08:00" pubdate>2013-12-18</time>
+      </p>
   </header>
-<p>This is a sample page.</p>
-<p>The <code>front-matter</code> of this page is:</p>
-<pre>layout: page
-title: Sample Page
-comments: true
-date: 2013-06-23 11:20
-sidebar: false
-xyz: "This is a custom text."
-</pre><p>Variable output:</p>
-<pre>${site.url} = http://lvjinguo.cn
-${page.layout} = page
-${page.title} = Sample Page
-${page.comments} = true
-${page.date} = 2013-6-23 11:20:00
-${page.sidebar} = false
-${page.xyz} = This is a custom text.
-</pre><p>A java code block here:</p>
-<pre class='brush:java'>import org.opoo.press.Plugin;
-import org.opoo.press.Site;
 
-public class MyPlugin implements Plugin{
-    //Construct MyPlugin
-    public void initialize(Site site){
-        //
-    }
-}
-</pre></article>
+  <div class="entry-content"><h3>配置文件</h3>
+<p>在配置文件<code>config.yml</code>中添加以下配置：</p>
+<pre class='brush:xml'># duoshuo Comments
+duoshuo_short_name: your_duoshuo_shortname
+</pre><h3>评论模板</h3>
+<ul>
+<li><p>添加文件<code>templates/post/duoshuo_thread.ftl</code></p>
+<pre class='brush:html'>&lt;!-- Duoshuo Comment BEGIN --&gt;
+&lt;div class="ds-thread"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+var duoshuoQuery = {short_name:"dollar{ site.duoshuo_short_name }"};
+// dollar 请手动转换为$,为了避免被OpooPress解析成博主自己的shortname使用dollar替代了$
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+&lt;/script&gt;
+&lt;!-- Duoshuo Comment END --&gt;
+</pre></li>
+<li><p>添加文件<code>templates/post/comments_duoshuo.ftl</code></p>
+<pre class='brush:html'>&lt;#-- page.comments is not set or true --&gt;
+&lt;#if site.duoshuo_short_name?? &amp;&amp; (page.comments)!true == true&gt;&lt;#assign showComments = true&gt;
+&lt;section&gt;
+&lt;h1&gt;&lt;@i18n.msg "Comments"/&gt;&lt;/h1&gt;
+&lt;#include "duoshuo_thread.ftl"&gt;
+&lt;/section&gt;
+&lt;/#if&gt;
+</pre></li>
+</ul>
+<h3>修改文章发布模板</h3>
+<p>将 <code>templates/_post.ftl</code>第28行修改为</p>
+<pre class='brush:html'>&lt;#include "post/comments_duoshuo.ftl"&gt;
+</pre></div>
+  <footer>
+    <p class="meta">
+<span class="byline author vcard">作者 <span class="fn">Kingour</span></span>      
+
+
+<time datetime="2013-12-18T10:44:00+08:00" pubdate>2013-12-18</time>
+
+<span class="categories">属于 <a class="category" href="/category/blog/">博客</a>, <a class="category" href="/category/comments/">comments</a>
+ 分类</span>
+
+
+<span class="categories">被贴了 <a class="tag" href="/tag/duoshuo/">duoshuo</a>
+ 标签</span>
+    </p>
+<div class="sharing">
+  </div>
+    <p class="meta">
+    </p>
+  </footer>
+</article>
+  <section>
+    <h1>评论</h1>
+<!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"kingour"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = 'http://static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- Duoshuo Comment END -->  </section>
 </div>
+<aside class="sidebar">
+<section>
+  <h1>近期文章</h1>
+  <ul id="recent_posts">
+  
+  
+      <li class="post">
+        <a href="/article/2013/12/duoshuo/">如何在OpooPress中配置多说插件</a>
+      </li>
+  </ul>
+</section>
+
+<section>
+  <h1>分类</h1>
+  <ul id="categories">
+	<li class="category"><a href="/category/blog/">博客</a><span class="count right">1</span>
+	</li>
+	<li class="category"><a href="/category/comments/">comments</a><span class="count right">1</span>
+	</li>
+  </ul>
+</section>
+</aside>
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -103,7 +175,7 @@ public class MyPlugin implements Plugin{
 <script type="text/javascript" src="/javascripts/opoopress.min.js"></script>
 <script language="JavaScript">
 <!--
-    window.OpooPress = new OpooPressApp({siteUrl:'http://lvjinguo.cn',rootUrl:'',pageUrl:'/sample-page.html',title:'Sample Page',refreshRelativeTimes:true,verbose:true},{});
+    window.OpooPress = new OpooPressApp({siteUrl:'http://lvjinguo.cn',rootUrl:'',pageUrl:'/article/2013/12/duoshuo/',title:'如何在OpooPress中配置多说插件',refreshRelativeTimes:true,verbose:true},{});
     OpooPress.init();
 
 //-->
@@ -147,3 +219,4 @@ public class MyPlugin implements Plugin{
 <!-- END: Syntax Highlighter ComPress -->
 </body>
 </html>
+

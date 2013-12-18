@@ -3,7 +3,7 @@
   <title><![CDATA[Kingour's Blog]]></title>
   <link href="http://lvjinguo.cn/atom.xml" rel="self"/>
   <link href="http://lvjinguo.cn/"/>
-  <updated>2013-12-18T00:59:51+08:00</updated>
+  <updated>2013-12-18T12:28:22+08:00</updated>
   <id>http://lvjinguo.cn/</id>
   <author>
     <name><![CDATA[Kingour]]></name>
@@ -12,12 +12,46 @@
   <generator uri="http://press.opoo.org/">OpooPress</generator>
 
   <entry>
-    <title type="html"><![CDATA[世界，你好！]]></title>
-    <link href="http://lvjinguo.cn/article/2013/12/hello-world/"/>
-    <updated>2013-12-17T23:52:00+08:00</updated>
-    <id>http://lvjinguo.cn/article/2013/12/hello-world/</id>
-    <content type="html"><![CDATA[<p>欢迎使用 OpooPress！</p>
-<p>这是系统自动生成的演示文章。编辑或者删除它，然后开始您的博客！</p>
-]]></content>
+    <title type="html"><![CDATA[如何在OpooPress中配置多说插件]]></title>
+    <link href="http://lvjinguo.cn/article/2013/12/duoshuo/"/>
+    <updated>2013-12-18T10:44:00+08:00</updated>
+    <id>http://lvjinguo.cn/article/2013/12/duoshuo/</id>
+    <content type="html"><![CDATA[<h3>配置文件</h3>
+<p>在配置文件<code>config.yml</code>中添加以下配置：</p>
+<pre class='brush:xml'># duoshuo Comments
+duoshuo_short_name: your_duoshuo_shortname
+</pre><h3>评论模板</h3>
+<ul>
+<li><p>添加文件<code>templates/post/duoshuo_thread.ftl</code></p>
+<pre class='brush:html'>&lt;!-- Duoshuo Comment BEGIN --&gt;
+&lt;div class="ds-thread"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+var duoshuoQuery = {short_name:"dollar{ site.duoshuo_short_name }"};
+// dollar 请手动转换为$,为了避免被OpooPress解析成博主自己的shortname使用dollar替代了$
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+&lt;/script&gt;
+&lt;!-- Duoshuo Comment END --&gt;
+</pre></li>
+<li><p>添加文件<code>templates/post/comments_duoshuo.ftl</code></p>
+<pre class='brush:html'>&lt;#-- page.comments is not set or true --&gt;
+&lt;#if site.duoshuo_short_name?? &amp;&amp; (page.comments)!true == true&gt;&lt;#assign showComments = true&gt;
+&lt;section&gt;
+&lt;h1&gt;&lt;@i18n.msg "Comments"/&gt;&lt;/h1&gt;
+&lt;#include "duoshuo_thread.ftl"&gt;
+&lt;/section&gt;
+&lt;/#if&gt;
+</pre></li>
+</ul>
+<h3>修改文章发布模板</h3>
+<p>将 <code>templates/_post.ftl</code>第28行修改为</p>
+<pre class='brush:html'>&lt;#include "post/comments_duoshuo.ftl"&gt;
+</pre>]]></content>
   </entry>
 </feed>

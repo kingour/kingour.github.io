@@ -3,7 +3,7 @@
   <title><![CDATA[Kingour's Blog]]></title>
   <link href="http://lvjinguo.cn/atom.xml" rel="self"/>
   <link href="http://lvjinguo.cn/"/>
-  <updated>2013-12-18T16:43:48+08:00</updated>
+  <updated>2013-12-19T22:00:23+08:00</updated>
   <id>http://lvjinguo.cn/</id>
   <author>
     <name><![CDATA[Kingour]]></name>
@@ -11,6 +11,13 @@
   </author>
   <generator uri="http://press.opoo.org/">OpooPress</generator>
 
+  <entry>
+    <title type="html"><![CDATA[Popup of Flash in different browsers]]></title>
+    <link href="http://lvjinguo.cn/article/2013/12/browser_block_with_flash_popup/"/>
+    <updated>2013-12-19T18:12:00+08:00</updated>
+    <id>http://lvjinguo.cn/article/2013/12/browser_block_with_flash_popup/</id>
+    <content type="html"><![CDATA[我们知道点击flash，flash打开新窗口，有时候会被浏览器阻止。下面的测试会说明在那些情况下会被阻止。]]></content>
+  </entry>
   <entry>
     <title type="html"><![CDATA[如何在OpooPress中配置多说插件]]></title>
     <link href="http://lvjinguo.cn/article/2013/12/duoshuo/"/>

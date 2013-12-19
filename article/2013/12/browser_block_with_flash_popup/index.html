@@ -12,7 +12,7 @@
   <meta name="OpooPressSiteRoot" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="Generator" content="OpooPress-1.0.3"/>
-  <meta name="Generated" content="2013-12-19T22:00:23+08:00"/>
+  <meta name="Generated" content="2013-12-19T22:07:41+08:00"/>
   <link rel="canonical" href="/article/2013/12/browser_block_with_flash_popup/">
   
   
@@ -71,9 +71,12 @@
   </header>
 
   <div class="entry-content">
-<!DOCTYPE html>
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8"><style>html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <style>html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
 
 /*** table ***/
@@ -144,147 +147,171 @@ color:#009193;
 text-decoration:none;
 } 
 </style>
-<title>browser_block_with_flash_popup</title></head><body><div class="toc">
-<ul>
-<li><a href="#1">1、测试方法</a></li>
-<li><a href="#2">2、测试结果</a></li>
-<li><a href="#3">3、结论</a></li>
-</ul>
-</div>
-<h1 id="1">1、测试方法</h1>
-<table>
-<thead>
-<tr>
-<th>方式</th>
-<th>函数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>JS</td>
-<td><code>window.open</code></td>
-</tr>
-<tr>
-<td>AS3</td>
-<td><code>navigateToURL</code></td>
-</tr>
-</tbody>
-</table>
-<h1 id="2">2、测试结果</h1>
-<ul>
-<li>wmode=<code>opaque</code></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>IE6</th>
-<th>IE7</th>
-<th>IE8</th>
-<th>IE9</th>
-<th>Chrome(v24)</th>
-<th>FireFox(v22)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>JS</td>
-<td>blocked</td>
-<td>blocked</td>
-<td>blocked</td>
-<td>blocked</td>
-<td>unblocked</td>
-<td>unblocked</td>
-</tr>
-<tr>
-<td>AS3</td>
-<td>unblocked</td>
-<td>unblocked</td>
-<td>unblocked</td>
-<td>unblocked</td>
-<td>unblocked</td>
-<td>unblocked</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>wmode=<code>transparent</code></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>IE6</th>
-<th>IE7</th>
-<th>IE8</th>
-<th>IE9</th>
-<th>Chrome(v24)</th>
-<th>FireFox(v22)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>JS</td>
-<td>blocked</td>
-<td>blocked</td>
-<td>blocked</td>
-<td>blocked</td>
-<td>unblocked</td>
-<td>unblocked</td>
-</tr>
-<tr>
-<td>AS3</td>
-<td>unblocked</td>
-<td>unblocked</td>
-<td>unblocked</td>
-<td>unblocked</td>
-<td>unblocked</td>
-<td>unblocked</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>wmode=<code>window</code></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>IE6</th>
-<th>IE7</th>
-<th>IE8</th>
-<th>IE9</th>
-<th>Chrome(v24)</th>
-<th>FireFox(v22)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>JS</td>
-<td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
-<td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
-<td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
-<td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
-<td>unblocked</td>
-<td>unblocked</td>
-</tr>
-<tr>
-<td>AS3</td>
-<td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
-<td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
-<td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
-<td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
-<td>unblocked</td>
-<td>unblocked</td>
-</tr>
-</tbody>
-</table>
-<h1 id="3">3、结论</h1>
-<ul>
-<li>当需要点击flash打开新窗口时，页面嵌入flash的参数wmode不能设置为window</li>
-<li>当检测到可以调用js时，优先调用js执行window.open，避免IE系列阻止弹出窗口</li>
-<li>当不可调用js时，只能调用flash原生API——navigateToURL</li>
-</ul></body></html>
+  <title>browser_block_with_flash_popup</title>
+</head>
+<body>
+  <div class="toc">
+    <ul>
+      <li>
+        <a href="#1">1、测试方法</a>
+      </li>
+      <li>
+        <a href="#2">2、测试结果</a>
+      </li>
+      <li>
+        <a href="#3">3、结论</a>
+      </li>
+    </ul>
+  </div>
+  <h4 id="1">1、测试方法</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>方式</th>
+        <th>函数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>JS</td>
+        <td>
+          <code>window.open</code>
+        </td>
+      </tr>
+      <tr>
+        <td>AS3</td>
+        <td>
+          <code>navigateToURL</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="2">2、测试结果</h4>
+  <ul>
+    <li>
+      wmode=
+      <code>opaque</code>
+    </li>
+  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>IE6</th>
+        <th>IE7</th>
+        <th>IE8</th>
+        <th>IE9</th>
+        <th>Chrome(v24)</th>
+        <th>FireFox(v22)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>JS</td>
+        <td>blocked</td>
+        <td>blocked</td>
+        <td>blocked</td>
+        <td>blocked</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+      </tr>
+      <tr>
+        <td>AS3</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+      </tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>
+      wmode=
+      <code>transparent</code>
+    </li>
+  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>IE6</th>
+        <th>IE7</th>
+        <th>IE8</th>
+        <th>IE9</th>
+        <th>Chrome(v24)</th>
+        <th>FireFox(v22)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>JS</td>
+        <td>blocked</td>
+        <td>blocked</td>
+        <td>blocked</td>
+        <td>blocked</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+      </tr>
+      <tr>
+        <td>AS3</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+      </tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>
+      wmode=
+      <code>window</code>
+    </li>
+  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>IE6</th>
+        <th>IE7</th>
+        <th>IE8</th>
+        <th>IE9</th>
+        <th>Chrome(v24)</th>
+        <th>FireFox(v22)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>JS</td>
+        <td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
+        <td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
+        <td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
+        <td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+      </tr>
+      <tr>
+        <td>AS3</td>
+        <td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
+        <td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
+        <td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
+        <td>第一次点击flash，unblocked；第一次点非flash，第二次点击flash，blcoked</td>
+        <td>unblocked</td>
+        <td>unblocked</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="3">3、结论</h4>
+  <ul>
+    <li>当需要点击flash打开新窗口时，页面嵌入flash的参数<code>wmode</code>不能设置为window</li>
+    <li>当检测到可以调用js时，优先调用js执行<code>window.open</code>，避免IE系列阻止弹出窗口</li>
+    <li>当不可调用js时，只能调用flash原生API<code>navigateToURL</code></li>
+  </ul>
+</body>
+</html>
 </div>
   <footer>
     <p class="meta">

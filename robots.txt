@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://lvjinguo.cn/sitemap.xml 
+Sitemap: https://blog.lvjinguo.cn/sitemap.xml 
